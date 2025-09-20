@@ -6,6 +6,7 @@ const path = require('path');
 
 const supplierRoutes = require('./routes/supplierRoutes');
 const productRoutes = require('./routes/productRoutes');
+const swaggerDocs = require('./swagger');   // 🔹 import swagger
 
 const app = express();
 
@@ -26,10 +27,15 @@ app.get('/', (req, res) => {
 app.use('/suppliers', supplierRoutes);
 app.use('/products', productRoutes);
 
+// Swagger Docs
+swaggerDocs(app);
+
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected'))
   .catch(err => console.log(err));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+});
