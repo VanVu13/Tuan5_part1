@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<h2>New Supplier</h2>
+<form action="/suppliers" method="POST">
+  <input class="form-control mb-2" name="name" placeholder="Name">
+  <input class="form-control mb-2" name="address" placeholder="Address">
+  <input class="form-control mb-2" name="phone" placeholder="Phone">
+  <button class="btn btn-success">Create</button>
+</form>
+<%- include('../partials/footer') %>
